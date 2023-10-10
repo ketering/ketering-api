@@ -17,7 +17,7 @@ class Role extends Model
 
     const ADMIN = 2;
 
-    const SUPERADMIN = 3;
+    const SUPERADMIN = 1;
 
     /**
      * Get all users of some role
