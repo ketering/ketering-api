@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->boolean('dark_mode')->default(false);
             $table->foreignId('role_id')->nullable()->constrained('roles');
+            $table->foreignId('company_id')->nullable()->constrained('companies');
             $table->string('photoPath')->nullable();
             $table->string('username')->unique();
             $table->string('name');
