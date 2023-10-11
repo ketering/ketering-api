@@ -17,7 +17,6 @@ return new class extends Migration
             $table->foreignId('role_id')->nullable()->constrained('roles');
             $table->foreignId('company_id')->nullable()->constrained('companies');
             $table->string('photoPath')->nullable();
-            $table->string('username')->unique();
             $table->string('name');
             $table->string('surname');
             $table->string('email')->unique();

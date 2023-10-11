@@ -19,8 +19,8 @@ class AuthController extends BaseController
      */
     public function login(Request $request)
     {
-        $validator = Validator::make($request->all(['username', 'password', 'device']), [
-            'username' => ['required'],
+        $validator = Validator::make($request->all(['email', 'password', 'device']), [
+            'email' => ['required'],
             'password' => ['required'],
             'device' => ['required']
         ]);
@@ -29,10 +29,10 @@ class AuthController extends BaseController
             return $this->sendError('Validation Error.', $validator->errors(), Response::HTTP_UNPROCESSABLE_ENTITY);
         }
 
-        if (Auth::attempt(['username' => $request->username, 'password' => $request->password])) {
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             $user = Auth::user();
             $success['token'] = $user->createToken($request->device)->plainTextToken;
-            $success['name'] = $user->username;
+            $success['name'] = $user->name . ' ' . $user->surname;
 
             return $this->sendResponse($success, 'User login successfully.');
         } else {
@@ -51,7 +51,6 @@ class AuthController extends BaseController
             "name" => ['required', 'max:255'],
             "surname" => ['required', 'max:255'],
             "email" => ['required', 'email', 'max:255', 'unique:users'],
-            "username" => ['required', 'max:255', 'unique:users', 'alpha_dash'],
             "password" => ['required', 'confirmed', 'min:8', 'max:255'],
             "device" => ['required']
         ]);
@@ -66,7 +65,7 @@ class AuthController extends BaseController
         $role = Role::guest();
         $role->users()->save($user);
         $success['token'] = $user->createToken($request->device)->plainTextToken;
-        $success['name'] = $user->username;
+        $success['name'] = $user->name . ' ' . $user->surname;
 
         return $this->sendResponse($success, 'User registered successfully.', Response::HTTP_CREATED);
     }
