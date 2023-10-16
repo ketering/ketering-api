@@ -48,6 +48,34 @@ class User extends Authenticatable
     ];
 
     /**
+     * Get the route key for the model.
+     *
+     * @return string
+     */
+    public function getRouteKeyName(): string
+    {
+        return 'username';
+    }
+
+    /**
+     * Get show my profile url
+     *
+     * @return string
+     */
+    public static function adminlte_profile_url(): string
+    {
+        # code
+        return '#';
+    }
+
+    public function adminlte_image(): string
+    {
+        # code
+        return $this->photoPath ?: asset('img/user.svg');
+    }
+
+
+    /**
      * Get Role of user
      *
      * @return BelongsTo
