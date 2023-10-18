@@ -57,6 +57,33 @@ class AppServiceProvider extends ServiceProvider
                 ]
             );
 
+            $event->menu->add(['header' => 'CATEGORY MANAGEMENT', 'classes' => 'font-weight-bold']);
+
+            $event->menu->add(
+                [
+                    'icon' => 'fas fa-folder',
+                    'url' => '#',
+                    'text' => 'Categories',
+                    'id' => 'categories',
+                    'key' => 'categories',
+                    'active' => ['categories*']
+                ],
+            );
+            $event->menu->addIn('categories',
+                [
+                    'icon' => 'fas fa-table',
+                    'text' => 'View All',
+                    'url' => '/categories'
+                ]
+            );
+            $event->menu->addIn('categories',
+                [
+                    'icon' => 'fas fa-plus',
+                    'text' => 'New Category',
+                    'url' => '/categories/create'
+                ]
+            );
+
         });
     }
 }

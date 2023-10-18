@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Category;
 use App\Models\Company;
 use Illuminate\Database\Seeder;
 
@@ -55,6 +56,19 @@ class DatabaseSeeder extends Seeder
         foreach ($companies as $company) {
             Company::factory([
                 'name' => $company,
+            ])->create();
+        }
+
+        $categories = [
+            ['Hrana', 'fas fa-pizza-slice'],
+            ['Piće', 'fas fa-wine-bottle'],
+            ['Dezert', 'fas fa-cookie-bite'],
+            ['Ostalo', 'fas fa-bread-slice']
+        ];
+        foreach ($categories as $category) {
+            Category::factory([
+                'name' => $category[0],
+                'icon' => $category[1]
             ])->create();
         }
     }

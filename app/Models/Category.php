@@ -10,6 +10,12 @@ class Category extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'icon',
+        'description'
+    ];
+
     /**
      * Get all meals of some category
      *
