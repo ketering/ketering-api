@@ -61,6 +61,31 @@ class AppServiceProvider extends ServiceProvider
 
             $event->menu->add(
                 [
+                    'icon' => 'fas fa-hamburger',
+                    'url' => '#',
+                    'text' => 'Meals',
+                    'id' => 'meals',
+                    'key' => 'meals',
+                    'active' => ['meals*']
+                ],
+            );
+            $event->menu->addIn('meals',
+                [
+                    'icon' => 'fas fa-table',
+                    'text' => 'View All',
+                    'url' => '/meals'
+                ]
+            );
+            $event->menu->addIn('meals',
+                [
+                    'icon' => 'fas fa-plus',
+                    'text' => 'New Meal',
+                    'url' => '/meals/create'
+                ]
+            );
+
+            $event->menu->add(
+                [
                     'icon' => 'fas fa-folder',
                     'url' => '#',
                     'text' => 'Categories',

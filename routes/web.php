@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminPanel\CategoryController;
+use App\Http\Controllers\AdminPanel\MealController;
 use App\Http\Controllers\AdminPanel\TypeController;
 use App\Http\Controllers\AdminPanel\UserController;
 use Illuminate\Support\Facades\Auth;
@@ -31,4 +32,5 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('/users', UserController::class);
     Route::resource('/categories', CategoryController::class);
     Route::resource('/types', TypeController::class);
+    Route::resource('/meals', MealController::class);
 });
