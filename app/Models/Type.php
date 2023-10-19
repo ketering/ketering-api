@@ -10,6 +10,12 @@ class Type extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'icon',
+        'name',
+        'description'
+    ];
+
     /**
      * Get all meals of some type
      *

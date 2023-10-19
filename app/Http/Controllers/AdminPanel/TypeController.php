@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\AdminPanel;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
+use App\Models\Type;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class TypeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,9 @@ class CategoryController extends Controller
     public function index()
     {
         //
-        $categories = Category::all();
-        return view('meals.categories.index', [
-            'categories' => $categories
+        $types = Type::all();
+        return view('meals.types.index', [
+            'types' => $types
         ]);
     }
 
@@ -26,7 +26,7 @@ class CategoryController extends Controller
     public function create()
     {
         //
-        return view('meals.categories.create');
+        return view('meals.types.create');
     }
 
     /**
@@ -39,37 +39,37 @@ class CategoryController extends Controller
             'name' => ['required', 'max:255']
         ])->validate();
 
-        Category::create([
+        Type::create([
             'icon' => 'fas fa-bread-slice',
             ...$validator
         ]);
-        return redirect()->route('categories.index')->with('success', 'Category successfully created');
+        return redirect()->route('types.index')->with('success', 'Type successfully created');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Category $category)
+    public function show(Type $type)
     {
         //
-        return view('meals.categories.show', [
-            'category' => $category,
+        return view('meals.types.show', [
+            'type' => $type,
         ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Category $category)
+    public function edit(Type $type)
     {
         //
-        return redirect()->route('categories.show', $category);
+        return redirect()->route('types.show', $type);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, Type $type)
     {
         //
         $validator = \Validator::make($request->all(), [
@@ -77,11 +77,11 @@ class CategoryController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return redirect(route('categories.show', $category) . '#settings')->withErrors($validator->errors());
+            return redirect(route('types.show', $type) . '#settings')->withErrors($validator->errors());
         }
 
-        $category->update($validator->validated());
-        return redirect()->route('categories.index')->with('success', 'Category successfully updated');
+        $type->update($validator->validated());
+        return redirect()->route('types.index')->with('success', 'Type successfully updated');
     }
 
     /**
@@ -90,12 +90,12 @@ class CategoryController extends Controller
     public function destroy(int $id)
     {
         //
-        $category = Category::findOrFail($id);
+        $category = Type::findOrFail($id);
         try {
             $category->delete();
         } catch (\Exception $e) {
-            return redirect()->route('categories.index')->with('fail', 'Nije moguće obrisati kategoriju');
+            return redirect()->route('types.index')->with('fail', 'Nije moguće obrisati tip');
         }
-        return redirect()->route('categories.index')->with('success', 'Kategorija uspješno obrisana');
+        return redirect()->route('types.index')->with('success', 'Tip uspješno obrisana');
     }
 }

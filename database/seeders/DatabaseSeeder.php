@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Category;
 use App\Models\Company;
+use App\Models\Type;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -69,6 +70,22 @@ class DatabaseSeeder extends Seeder
             Category::factory([
                 'name' => $category[0],
                 'icon' => $category[1]
+            ])->create();
+        }
+
+        $types = [
+            ['Ljuto', 'fas fa-fire'],
+            ['Posno', 'fas fa-fish'],
+            ['Vegansko', 'fas fa-leaf'],
+            ['Halal', 'fas fa-check-double'],
+            ['Gluten-Free', 'fas fa-seedling'],
+            ['Mliječni Proizvod', 'fas fa-cheese'],
+            ['Ostalo', 'fas fa-bread-slice'],
+        ];
+        foreach ($types as $type) {
+            Type::factory([
+                'name' => $type[0],
+                'icon' => $type[1]
             ])->create();
         }
     }

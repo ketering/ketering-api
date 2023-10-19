@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminPanel\CategoryController;
+use App\Http\Controllers\AdminPanel\TypeController;
 use App\Http\Controllers\AdminPanel\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -29,4 +30,5 @@ Route::get('/home', function () {
 Route::group(['middleware' => ['auth']], function () {
     Route::resource('/users', UserController::class);
     Route::resource('/categories', CategoryController::class);
+    Route::resource('/types', TypeController::class);
 });

@@ -57,7 +57,7 @@ class AppServiceProvider extends ServiceProvider
                 ]
             );
 
-            $event->menu->add(['header' => 'CATEGORY MANAGEMENT', 'classes' => 'font-weight-bold']);
+            $event->menu->add(['header' => 'MEAL MANAGEMENT', 'classes' => 'font-weight-bold']);
 
             $event->menu->add(
                 [
@@ -81,6 +81,31 @@ class AppServiceProvider extends ServiceProvider
                     'icon' => 'fas fa-plus',
                     'text' => 'New Category',
                     'url' => '/categories/create'
+                ]
+            );
+
+            $event->menu->add(
+                [
+                    'icon' => 'fas fa-folder',
+                    'url' => '#',
+                    'text' => 'Types',
+                    'id' => 'types',
+                    'key' => 'types',
+                    'active' => ['types*']
+                ],
+            );
+            $event->menu->addIn('types',
+                [
+                    'icon' => 'fas fa-table',
+                    'text' => 'View All',
+                    'url' => '/types'
+                ]
+            );
+            $event->menu->addIn('types',
+                [
+                    'icon' => 'fas fa-plus',
+                    'text' => 'New Type',
+                    'url' => '/types/create'
                 ]
             );
 
