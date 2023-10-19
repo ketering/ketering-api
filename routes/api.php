@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\TypeController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -34,6 +35,11 @@ Route::group(["middleware" => 'auth:sanctum'], function () {
     Route::controller(CategoryController::class)->group(function () {
         Route::get('/categories', 'index');
         Route::get('/categories/{category}', 'show');
+    });
+
+    Route::controller(TypeController::class)->group(function () {
+        Route::get('/types', 'index');
+        Route::post('/types/filter', 'show');
     });
 
 });
