@@ -10,6 +10,11 @@ class Status extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'icon'
+    ];
+
     /**
      * Get all orders of some order-status
      *

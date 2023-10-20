@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Category;
 use App\Models\Company;
+use App\Models\Status;
 use App\Models\Type;
 use Illuminate\Database\Seeder;
 
@@ -86,6 +87,19 @@ class DatabaseSeeder extends Seeder
             Type::factory([
                 'name' => $type[0],
                 'icon' => $type[1]
+            ])->create();
+        }
+
+        $statuses = [
+            ['U obradi', 'fas fa-clock'],
+            ['U pripremi', 'fas fa-hourglass-start'],
+            ['Dostavlja se', 'fas fa-truck-moving'],
+            ['Dostavljeno', 'fas fa-check'],
+        ];
+        foreach ($statuses as $status) {
+            Status::factory([
+                'name' => $status[0],
+                'icon' => $status[1]
             ])->create();
         }
     }
