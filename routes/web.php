@@ -33,9 +33,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('/users', UserController::class);
     Route::resource('/categories', CategoryController::class);
     Route::resource('/types', TypeController::class);
-<<<<<<< HEAD
-    Route::resource('/statuses', StatusesController::class);
-=======
     Route::resource('/meals', MealController::class);
->>>>>>> 7572badb52085bc1178886940df50de9cfad8303
+    Route::resource('/statuses', StatusesController::class);
 });
