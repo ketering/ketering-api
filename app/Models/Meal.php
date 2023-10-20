@@ -11,6 +11,14 @@ class Meal extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'price',
+        'category_id',
+        'description',
+        'avg_rating'
+    ];
+
     /**
      * Get category of meal
      *

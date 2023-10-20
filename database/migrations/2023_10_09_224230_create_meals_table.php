@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('photoPath')->nullable();
             $table->text('description')->nullable();
             $table->float('price', 10, 2);
-            $table->float('avg_rating', 3, 2);
+            $table->float('avg_rating', 3, 2)->nullable();
             $table->timestamps();
         });
     }
