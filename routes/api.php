@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\MealController;
 use App\Http\Controllers\Api\TypeController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use Illuminate\Http\Request;
@@ -42,4 +43,8 @@ Route::group(["middleware" => 'auth:sanctum'], function () {
         Route::post('/types/filter', 'show');
     });
 
+    Route::controller(MealController::class)->group(function () {
+        Route::post('/meals', 'index');
+        Route::get('/meals/{meal}', 'show');
+    });
 });
