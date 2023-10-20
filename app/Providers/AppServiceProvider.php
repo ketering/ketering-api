@@ -109,6 +109,32 @@ class AppServiceProvider extends ServiceProvider
                 ]
             );
 
+            $event->menu->add(['header' => 'ORDER MANAGEMENT', 'classes' => 'font-weight-bold']);
+
+            $event->menu->add(
+                [
+                    'icon' => 'fas fa-folder',
+                    'url' => '#',
+                    'text' => 'Statuses',
+                    'id' => 'statuses',
+                    'key' => 'statuses',
+                    'active' => ['statuses*']
+                ],
+            );
+            $event->menu->addIn('statuses',
+                [
+                    'icon' => 'fas fa-table',
+                    'text' => 'View All',
+                    'url' => '/statuses'
+                ]
+            );
+            $event->menu->addIn('statuses',
+                [
+                    'icon' => 'fas fa-plus',
+                    'text' => 'New Status',
+                    'url' => '/statuses/create'
+                ]
+            );
         });
     }
 }

@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminPanel\CategoryController;
 use App\Http\Controllers\AdminPanel\TypeController;
 use App\Http\Controllers\AdminPanel\UserController;
+use App\Http\Controllers\AdminPanel\StatusesController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -31,4 +32,5 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('/users', UserController::class);
     Route::resource('/categories', CategoryController::class);
     Route::resource('/types', TypeController::class);
+    Route::resource('/statuses', StatusesController::class);
 });

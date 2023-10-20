@@ -9,7 +9,9 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Status extends Model
 {
     use HasFactory;
-
+    protected $fillable = [
+        'name',
+    ];
     /**
      * Get all orders of some order-status
      *
