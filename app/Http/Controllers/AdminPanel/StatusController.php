@@ -48,7 +48,7 @@ class StatusController extends Controller
             'icon' => 'fas fa-signal',
             ...$validator
         ]);
-        return redirect()->route('statuses.index')->with('success', 'Status successfully created');
+        return redirect()->route('statuses.index')->with('success', 'Status uspješno kreiran');
     }
 
     /**
@@ -86,7 +86,7 @@ class StatusController extends Controller
         }
 
         $status->update($validator->validated());
-        return redirect()->route('statuses.index')->with('success', 'Status successfully updated');
+        return redirect()->route('statuses.index')->with('success', 'Status uspješno ažuriran');
     }
 
     /**

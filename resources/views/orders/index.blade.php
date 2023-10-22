@@ -4,7 +4,7 @@
 @section('plugins.TempusDominusBs4', true)
 
 @section('content_header')
-    <h3 class="m-0 text-dark">View All Orders for <b>@php echo $_GET['forDate'] ?? 'Today' @endphp </b></h3>
+    <h3 class="m-0 text-dark">Pregled svih narudžbina <b>@php echo $_GET['forDate'] ?? 'Today' @endphp </b></h3>
 @stop
 
 @section('content')

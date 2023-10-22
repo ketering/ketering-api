@@ -1,7 +1,7 @@
 @extends('adminlte::page')
 
 @section('content_header')
-    <h3 class="m-0 text-dark">Create New Meal Category</h3>
+    <h3 class="m-0 text-dark">Novi status</h3></h3>
 @stop
 
 @section('content')
@@ -11,9 +11,9 @@
                   autocomplete="off">
                 @csrf
 
-                <x-adminlte-input type="text" enable-old-support name="name" label="Name" placeholder="Name"/>
+                <x-adminlte-input type="text" enable-old-support name="name" label="Naziv" placeholder="Naziv"/>
 
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary">Napravi</button>
             </form>
         </div>
     </div>

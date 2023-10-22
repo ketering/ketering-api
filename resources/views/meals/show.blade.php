@@ -5,7 +5,7 @@
 @section('plugins.Select2', true)
 
 @section('content_header')
-    <h3 class="m-0 text-dark">View Single Meal</h3>
+    <h3 class="m-0 text-dark">Pregled jela</h3>
 @stop
 
 @section('content')
@@ -60,7 +60,7 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" id="settings-tab" data-toggle="tab" href="#settings" role="tab"
-                               aria-controls="settings" aria-selected="false">Settings</a>
+                               aria-controls="settings" aria-selected="false">Podešavanja</a>
                         </li>
                     </ul>
 
@@ -73,7 +73,7 @@
                                    style="width:100%">
                                 <thead>
                                 <tr>
-                                    <th>Ime</th>
+                                    <th>Naziv</th>
                                     <th>Kompanija</th>
                                     <th>Ocjena</th>
                                 </tr>
@@ -106,8 +106,8 @@
                                     <div class="col-6">
                                         <x-adminlte-input type="number" step="0.01" value="{{ $meal->price }}" min="0"
                                                           enable-old-support name="price"
-                                                          label="Price"
-                                                          placeholder="Price">
+                                                          label="Cijena"
+                                                          placeholder="Cijena">
                                             <x-slot name="prependSlot">
                                                 <div class="input-group-text">
                                                     <i class="fas fa-euro-sign"></i>
@@ -164,7 +164,7 @@
                                     </div>
                                 </div>
 
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" class="btn btn-primary">Sačuvaj</button>
                             </form>
                         </div>
                     </div>

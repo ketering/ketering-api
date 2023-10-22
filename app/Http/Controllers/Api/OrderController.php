@@ -61,7 +61,7 @@ class OrderController extends BaseController
             }
         }
 
-        return $this->sendResponse('', 'Order created successfully');
+        return $this->sendResponse('', 'Narudžbina uspješno kreiran');
     }
 
     public function show(Order $order)

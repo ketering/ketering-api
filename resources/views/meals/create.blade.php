@@ -3,7 +3,7 @@
 @section('plugins.Select2', true)
 
 @section('content_header')
-    <h3 class="m-0 text-dark">Create New Meal Type</h3>
+    <h3 class="m-0 text-dark">Nova kategorija jela</h3></h3>
 @stop
 
 @section('content')
@@ -18,13 +18,13 @@
                     <div class="col-12 col-xl-6">
                         <div class="row">
                             <div class="col-6">
-                                <x-adminlte-input type="text" enable-old-support name="name" label="Name"
-                                                  placeholder="Name"/>
+                                <x-adminlte-input type="text" enable-old-support name="name" label="Naziv"
+                                                  placeholder="Naziv"/>
                             </div>
                             <div class="col-6">
                                 <x-adminlte-input type="number" min="0" step="0.01" enable-old-support name="price"
-                                                  label="Price"
-                                                  placeholder="Price">
+                                                  label="Cijena"
+                                                  placeholder="Cijena">
                                     <x-slot name="prependSlot">
                                         <div class="input-group-text">
                                             <i class="fas fa-euro-sign"></i>
@@ -70,8 +70,8 @@
                         <div class="row">
                             <div class="col-12">
                                 <x-adminlte-text-editor enable-old-support class="form-control" name="description"
-                                                        label="Description"
-                                                        placeholder="Description" :config="['height' => '200']"/>
+                                                        label="Opis"
+                                                        placeholder="Opis" :config="['height' => '200']"/>
                             </div>
                         </div>
                     </div>
@@ -79,8 +79,8 @@
                         <div class="d-flex align-items-center justify-content-between">
                             <div class="w-75">
                                 <x-adminlte-input type="text" min="0" enable-old-support name="prompt"
-                                                  label="AI photo generation"
-                                                  placeholder="Enter prompt">
+                                                  label="AI generisana slika"
+                                                  placeholder="Napravite opis">
                                     <x-slot name="prependSlot">
                                         <div class="input-group-text">
                                             <i class="fas fa-robot"></i>
@@ -89,7 +89,7 @@
                                 </x-adminlte-input>
                             </div>
                             <div>
-                                <button id="generate" type="button" class="btn btn-outline-primary mt-3">Generate
+                                <button id="generate" type="button" class="btn btn-outline-primary mt-3">Generiši
                                 </button>
                             </div>
                         </div>
@@ -105,7 +105,7 @@
 
                 <input hidden value="" type="text" name="photoPath" id="photoPath">
 
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary">Sačuvaj</button>
             </form>
         </div>
     </div>

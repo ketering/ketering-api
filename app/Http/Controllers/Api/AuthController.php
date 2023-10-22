@@ -34,9 +34,9 @@ class AuthController extends BaseController
             $success['token'] = $user->createToken($request->device)->plainTextToken;
             $success['name'] = $user->name . ' ' . $user->surname;
 
-            return $this->sendResponse($success, 'User login successfully.');
+            return $this->sendResponse($success, 'Korisnik uspješno prijavljen.');
         } else {
-            return $this->sendError('Unauthorized.', ['error' => 'Invalid login credentials. Please try again.'], Response::HTTP_UNAUTHORIZED);
+            return $this->sendError('Unauthorized.', ['error' => 'Neipravne informacije . Molimo pokušajte ponovo.'], Response::HTTP_UNAUTHORIZED);
         }
     }
 
@@ -56,7 +56,7 @@ class AuthController extends BaseController
         ]);
 
         if ($validator->fails()) {
-            return $this->sendError('Validation Error.', $validator->errors(), Response::HTTP_UNPROCESSABLE_ENTITY);
+            return $this->sendError('Problem pri verifikaciji.', $validator->errors(), Response::HTTP_UNPROCESSABLE_ENTITY);
         }
 
         $input = $request->all();
@@ -67,7 +67,7 @@ class AuthController extends BaseController
         $success['token'] = $user->createToken($request->device)->plainTextToken;
         $success['name'] = $user->name . ' ' . $user->surname;
 
-        return $this->sendResponse($success, 'User registered successfully.', Response::HTTP_CREATED);
+        return $this->sendResponse($success, 'Korisnik uspješno registrovan.', Response::HTTP_CREATED);
     }
 
     /**
@@ -87,6 +87,6 @@ class AuthController extends BaseController
             request()->user()->currentAccessToken()->delete();
         }
 
-        return $this->sendResponse($all ? 'All tokens revoked' : 'Current token revoked', 'User logout successfully.', Response::HTTP_OK);
+        return $this->sendResponse($all ? 'All tokens revoked' : 'Current token revoked', 'Korisnik uspješno odjavljen.', Response::HTTP_OK);
     }
 }

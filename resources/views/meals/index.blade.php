@@ -3,7 +3,7 @@
 @section('plugins.DatatablesResponsive', true)
 
 @section('content_header')
-    <h3 class="m-0 text-dark">View All Meals</h3>
+    <h3 class="m-0 text-dark">Pregled svih jela</h3>
 @stop
 
 @section('content')

@@ -48,7 +48,7 @@ class TypeController extends Controller
             'icon' => 'fas fa-bread-slice',
             ...$validator
         ]);
-        return redirect()->route('types.index')->with('success', 'Type successfully created');
+        return redirect()->route('types.index')->with('success', 'Tip uspješno kreiran');
     }
 
     /**
@@ -86,7 +86,7 @@ class TypeController extends Controller
         }
 
         $type->update($validator->validated());
-        return redirect()->route('types.index')->with('success', 'Type successfully updated');
+        return redirect()->route('types.index')->with('success', 'Tip uspješno ažuriran');
     }
 
     /**
@@ -101,6 +101,6 @@ class TypeController extends Controller
         } catch (\Exception $e) {
             return redirect()->route('types.index')->with('fail', 'Nije moguće obrisati tip');
         }
-        return redirect()->route('types.index')->with('success', 'Tip uspješno obrisana');
+        return redirect()->route('types.index')->with('success', 'Tip uspješno obrisan');
     }
 }

@@ -3,7 +3,7 @@
 @section('plugins.DatatablesResponsive', true)
 
 @section('content_header')
-    <h3 class="m-0 text-dark">View Single Meal Category</h3>
+    <h3 class="m-0 text-dark"></h3>
 @stop
 
 @section('content')
@@ -15,7 +15,7 @@
                     <p class="text-muted text-center"></p>
                     <ul class="list-group list-group-unbordered mb-3">
                         <li class="list-group-item">
-                            <b>Meals</b> <a class="float-right">
+                            <b>Obroci</b> <a class="float-right">
                                 {{ $status->orders->count() }}
                             </a>
                         </li>
@@ -30,11 +30,11 @@
                     <ul class="nav nav-pills" id="myTab" role="tablist">
                         <li class="nav-item">
                             <a class="nav-link active" id="orders-tab" data-toggle="tab" href="#orders" role="tab"
-                               aria-controls="orders" aria-selected="true">Orders</a>
+                               aria-controls="orders" aria-selected="true">narudžbine</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" id="settings-tab" data-toggle="tab" href="#settings" role="tab"
-                               aria-controls="settings" aria-selected="false">Settings</a>
+                               aria-controls="settings" aria-selected="false">Podesavanja</a>
                         </li>
                     </ul>
 
@@ -47,7 +47,7 @@
                                    style="width:100%">
                                 <thead>
                                 <tr>
-                                    <th>Options</th>
+                                    <th>Opcije</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -62,7 +62,7 @@
                                 </tbody>
                                 <tfoot>
                                 <tr>
-                                    <th>Options</th>
+                                    <th>Opcije</th>
                                 </tr>
                                 </tfoot>
                             </table>
@@ -78,7 +78,7 @@
                                 <x-adminlte-input enable-old-support value="{{ $status->name }}" name="name"
                                                   label="Name"
                                                   placeholder="Name"/>
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" class="btn btn-primary">Potvrdi</button>
                             </form>
                         </div>
                     </div>
