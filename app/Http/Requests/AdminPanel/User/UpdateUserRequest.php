@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests\AdminPanel\User;
 
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\ValidationException;
 
 class UpdateUserRequest extends FormRequest
 {
@@ -31,5 +33,12 @@ class UpdateUserRequest extends FormRequest
             "photoPath" => [''],
             "company_id" => ['']
         ];
+    }
+
+    protected function failedValidation(Validator $validator)
+    {
+        throw (new ValidationException($validator))
+            ->errorBag($this->errorBag)
+            ->redirectTo($this->getRedirectUrl() . '#settings');
     }
 }

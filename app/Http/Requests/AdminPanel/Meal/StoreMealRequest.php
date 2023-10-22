@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests\AdminPanel\Meal;
 
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\ValidationException;
 
 class StoreMealRequest extends FormRequest
 {
@@ -29,5 +31,12 @@ class StoreMealRequest extends FormRequest
             'types.*' => ['required', 'int'],
             'description' => ['']
         ];
+    }
+
+    protected function failedValidation(Validator $validator)
+    {
+        throw (new ValidationException($validator))
+            ->errorBag($this->errorBag)
+            ->redirectTo($this->getRedirectUrl() . '#settings');
     }
 }

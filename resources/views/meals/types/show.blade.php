@@ -29,8 +29,8 @@
                 <div class="card-header p-2">
                     <ul class="nav nav-pills" id="myTab" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link active" id="meals-tab" data-toggle="tab" href="#meals" role="tab"
-                               aria-controls="meals" aria-selected="true">Meals</a>
+                            <a class="nav-link active" id="meal-tab" data-toggle="tab" href="#meal" role="tab"
+                               aria-controls="meal" aria-selected="true">Meals</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" id="settings-tab" data-toggle="tab" href="#settings" role="tab"
@@ -41,30 +41,40 @@
                 </div>
                 <div class="card-body">
                     <div class="tab-content">
-                        <div class="tab-pane fade show active" id="meals" role="tabpanel"
-                             aria-labelledby="meals-tab">
+                        <div class="tab-pane fade show active" id="meal" role="tabpanel"
+                             aria-labelledby="meal-tab">
                             <table id="datatable" class="table table-striped table-bordered"
                                    style="width:100%">
                                 <thead>
                                 <tr>
-                                    <th>Options</th>
+                                    <th>Kategorija</th>
+                                    <th>Ime</th>
+                                    <th>Cijena</th>
+                                    <th>Rejting</th>
+                                    <th>Opcije</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($type->meals as $meal)
-                                    <td>
-                                        <div class="d-flex justify-content-center">
-                                            <a href="#"
-                                               class="btn btn-outline-primary ml-2 mr-2"><i class="fas fa-eye"></i></a>
-                                        </div>
-                                    </td>
+                                    <tr>
+                                        <td><i class="{{ $meal->category->icon }}"></i> {{ $meal->category->name }}</td>
+                                        <td>{{ $meal->name }}</td>
+                                        <td>{{ $meal->price }} <b>&#8364;</b></td>
+                                        <td>{{ $meal->avg_rating }}</td>
+                                        <td>
+                                            <div class="d-flex justify-content-center">
+
+                                                <a href="{{ route('meals.show', $meal) }}"
+                                                   class="btn btn-outline-primary ml-2 mr-2"><i class="fas fa-eye"></i></a>
+
+                                                <button onclick="confirmDel(event, '/meals', {{ $meal->id }})"
+                                                        class="btn btn-outline-danger ml-2 delete-user"><i class="fas fa-trash"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
                                 @endforeach
                                 </tbody>
-                                <tfoot>
-                                <tr>
-                                    <th>Options</th>
-                                </tr>
-                                </tfoot>
                             </table>
                         </div>
 

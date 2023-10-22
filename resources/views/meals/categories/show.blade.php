@@ -47,24 +47,29 @@
                                    style="width:100%">
                                 <thead>
                                 <tr>
-                                    <th>Options</th>
+                                    <th>Kategorija</th>
+                                    <th>Ime</th>
+                                    <th>Cijena</th>
+                                    <th>Rejting</th>
+                                    <th>Opcije</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($category->meals as $meal)
-                                    <td>
-                                        <div class="d-flex justify-content-center">
-                                            <a href="#"
-                                               class="btn btn-outline-primary ml-2 mr-2"><i class="fas fa-eye"></i></a>
-                                        </div>
-                                    </td>
+                                    <tr>
+                                        <td><i class="{{ $meal->category->icon }}"></i> {{ $meal->category->name }}</td>
+                                        <td>{{ $meal->name }}</td>
+                                        <td>{{ $meal->price }} <b>&#8364;</b></td>
+                                        <td>{{ $meal->avg_rating }}</td>
+                                        <td>
+                                            <div class="d-flex justify-content-center">
+                                                <a href="{{ route('meals.show', $meal) }}"
+                                                   class="btn btn-outline-primary ml-2 mr-2"><i class="fas fa-eye"></i></a>
+                                            </div>
+                                        </td>
+                                    </tr>
                                 @endforeach
                                 </tbody>
-                                <tfoot>
-                                <tr>
-                                    <th>Options</th>
-                                </tr>
-                                </tfoot>
                             </table>
                         </div>
 
