@@ -29,7 +29,8 @@ class StoreMealRequest extends FormRequest
             'category_id' => ['required', 'int'],
             'types' => ['required', 'array'],
             'types.*' => ['required', 'int'],
-            'description' => ['']
+            'description' => [''],
+            'photoPath' => ['']
         ];
     }
 

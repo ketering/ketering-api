@@ -16,7 +16,8 @@ class Meal extends Model
         'price',
         'category_id',
         'description',
-        'avg_rating'
+        'avg_rating',
+        'photoPath'
     ];
 
     /**

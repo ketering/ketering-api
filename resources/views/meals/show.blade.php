@@ -13,31 +13,38 @@
         <div class="col-12">
             <div class="card card-primary card-outline">
                 <div class="card-body box-meals">
-                    <h3 class="meals-username text-center">{{ $meal->name }}</h3>
-                    <p class="text-muted text-center"></p>
-                    <ul class="list-group list-group-unbordered mb-3">
-                        <li class="list-group-item">
-                            <b>Kategorija</b> <a href="{{ route('categories.show', $meal->category) }}"
-                                                 class="float-right">
-                                <i class="{{ $meal->category->icon }}"></i>
-                                {{ $meal->category->name }}
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <b>Tip</b>
-                            <p class="float-right m-0">
-                                @foreach($meal->types as $type)
-                                    {{ $type->name }},
-                                @endforeach
-                            </p>
-                        </li>
-                        <li class="list-group-item">
-                            <b>Ocjena</b>
-                            <p class="float-right m-0">
-                                <b>{{ $meal->avg_rating }}</b>
-                            </p>
-                        </li>
-                    </ul>
+                    <div class="row">
+                        <div class="col-2">
+                            <img src="{{ $meal->photoPath }}" alt="" class="img-fluid img-rounded">
+                        </div>
+                        <div class="col-10">
+                            <h3 class="meals-username text-center">{{ $meal->name }}</h3>
+                            <p class="text-muted text-center"></p>
+                            <ul class="list-group list-group-unbordered mb-3">
+                                <li class="list-group-item">
+                                    <b>Kategorija</b> <a href="{{ route('categories.show', $meal->category) }}"
+                                                         class="float-right">
+                                        <i class="{{ $meal->category->icon }}"></i>
+                                        {{ $meal->category->name }}
+                                    </a>
+                                </li>
+                                <li class="list-group-item">
+                                    <b>Tip</b>
+                                    <p class="float-right m-0">
+                                        @foreach($meal->types as $type)
+                                            {{ $type->name }},
+                                        @endforeach
+                                    </p>
+                                </li>
+                                <li class="list-group-item">
+                                    <b>Ocjena</b>
+                                    <p class="float-right m-0">
+                                        <b>{{ $meal->avg_rating }}</b>
+                                    </p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

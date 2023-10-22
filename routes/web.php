@@ -36,6 +36,7 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
     Route::resource('/categories', CategoryController::class);
     Route::resource('/types', TypeController::class);
     Route::resource('/meals', MealController::class);
+    Route::post('/meal-generate', [MealController::class, 'generateImg']);
     Route::resource('/statuses', StatusController::class);
 
     Route::resource('/orders', OrderController::class);

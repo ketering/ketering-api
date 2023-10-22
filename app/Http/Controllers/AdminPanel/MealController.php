@@ -8,6 +8,8 @@ use App\Models\Category;
 use App\Models\Meal;
 use App\Models\Type;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Storage;
 
 class MealController extends Controller
 {
@@ -26,6 +28,42 @@ class MealController extends Controller
         $meals = Meal::all();
         return view('meals.index', [
             'meals' => $meals
+        ]);
+    }
+
+    public function generateImg(Request $request)
+    {
+        # code
+        $validator = \Validator::make($request->all(), [
+            'prompt' => ['required', 'string']
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'fail_msg' => 'Unesite prompt za generisanje'
+            ]);
+        }
+
+        $response = Http::withHeaders([
+            'Content-Type' => 'application/json',
+            'Authorization' => 'Bearer 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'
+        ])
+            ->post('https://api.openai.com/v1/images/generations', [
+                'prompt' => $request->prompt,
+                'n' => 1,
+                'size' => '256x256',
+                'response_format' => 'b64_json'
+            ]);
+
+        $image = explode('base64,', $response->json('data')[0]['b64_json']);
+        $image = end($image);
+        $image = str_replace(' ', '+', $image);
+        $file = "meals/" . uniqid() . '.png';
+
+        Storage::disk('public')->put($file, base64_decode($image));
+
+        return response()->json([
+            'url' => asset('/storage/' . $file)
         ]);
     }
 
@@ -51,7 +89,7 @@ class MealController extends Controller
         //
         $input = $request->validated();
 
-        $meal = new Meal(\Arr::only($input, ['name', 'price', 'category_id', 'description']));
+        $meal = new Meal(\Arr::only($input, ['name', 'price', 'category_id', 'description', 'photoPath']));
         $meal->save();
 
         $meal->types()->sync($input['types']);
