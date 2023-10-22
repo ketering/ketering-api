@@ -16,7 +16,7 @@ class SuperAdminMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (auth()->user()->role === Role::superadmin()) {
+        if (auth()->user()->role == Role::superadmin()) {
             return $next($request);
         } else {
             return back()->with('fail', 'Nemate permisiju');
