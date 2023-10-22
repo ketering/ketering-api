@@ -190,6 +190,28 @@ class AppServiceProvider extends ServiceProvider
                 );
             }
 
+            if (auth()->user()->role == Role::superadmin()) {
+                $event->menu->add(['header' => 'INVOICE MANAGEMENT', 'classes' => 'font-weight-bold']);
+
+                $event->menu->add(
+                    [
+                        'icon' => 'fas fa-receipt',
+                        'url' => '#',
+                        'text' => 'Fakture',
+                        'id' => 'invoices',
+                        'key' => 'invoices',
+                        'active' => ['invoices*']
+                    ],
+                );
+                $event->menu->addIn('invoices',
+                    [
+                        'icon' => 'fas fa-table',
+                        'text' => 'Eksportuj',
+                        'url' => '/invoices'
+                    ]
+                );
+            }
+
         });
     }
 }

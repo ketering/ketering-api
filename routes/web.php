@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminPanel\CategoryController;
+use App\Http\Controllers\AdminPanel\InvoiceController;
 use App\Http\Controllers\AdminPanel\MealController;
 use App\Http\Controllers\AdminPanel\OrderController;
 use App\Http\Controllers\AdminPanel\StatusController;
@@ -37,4 +38,7 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
 
     Route::resource('/orders', OrderController::class);
     Route::post('/change-order-status/{order}', [OrderController::class, 'changeStatus'])->name('order.change-status');
+
+    Route::get('/invoices', [InvoiceController::class, 'index']);
+    Route::post('/invoices/generate', [InvoiceController::class, 'generate'])->name('invoices.generate');
 });
