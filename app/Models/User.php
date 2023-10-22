@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -96,5 +97,15 @@ class User extends Authenticatable
     {
         # code
         return $this->belongsTo(Company::class);
+    }
+
+    /**
+     * Get orders of user
+     * @return HasMany
+     */
+    public function orders(): HasMany
+    {
+        # code
+        return $this->hasMany(Order::class);
     }
 }

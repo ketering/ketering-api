@@ -23,10 +23,10 @@ class StoreMealRequest extends FormRequest
     {
         return [
             'name' => ['required', 'max:255'],
-            'price' => ['required', 'int'],
+            'price' => ['required', 'numeric'],
             'category_id' => ['required', 'int'],
             'types' => ['required', 'array'],
-            'types*' => ['required', 'int'],
+            'types.*' => ['required', 'int'],
             'description' => ['']
         ];
     }

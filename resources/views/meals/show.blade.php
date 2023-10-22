@@ -95,7 +95,7 @@
                                                           placeholder="Name"/>
                                     </div>
                                     <div class="col-6">
-                                        <x-adminlte-input type="number" value="{{ $meal->price }}" min="0"
+                                        <x-adminlte-input type="number" step="0.01" value="{{ $meal->price }}" min="0"
                                                           enable-old-support name="price"
                                                           label="Price"
                                                           placeholder="Price">

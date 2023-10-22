@@ -11,6 +11,13 @@ class Order extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'forDate',
+        'rating',
+        'totalPrice',
+        'description'
+    ];
+
     /**
      * Get status of an order
      *
@@ -20,6 +27,16 @@ class Order extends Model
     {
         # code
         return $this->belongsTo(Status::class);
+    }
+
+    /**
+     * Get owner of order
+     * @return BelongsTo
+     */
+    public function user(): BelongsTo
+    {
+        # code
+        return $this->belongsTo(User::class);
     }
 
     /**

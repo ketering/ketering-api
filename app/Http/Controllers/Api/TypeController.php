@@ -37,7 +37,7 @@ class TypeController extends BaseController
         # code
         $validator = \Validator::make($request->all(), [
             'ids' => ['required', 'array'],
-            'ids*' => ['required', 'int']
+            'ids.*' => ['required', 'int']
         ]);
 
         if ($validator->fails()) {

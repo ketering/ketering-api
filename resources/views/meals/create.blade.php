@@ -18,7 +18,7 @@
                         <x-adminlte-input type="text" enable-old-support name="name" label="Name" placeholder="Name"/>
                     </div>
                     <div class="col-6">
-                        <x-adminlte-input type="number" min="0" enable-old-support name="price" label="Price"
+                        <x-adminlte-input type="number" min="0" step="0.01" enable-old-support name="price" label="Price"
                                           placeholder="Price">
                             <x-slot name="prependSlot">
                                 <div class="input-group-text">

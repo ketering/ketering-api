@@ -16,6 +16,8 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users');
             $table->foreignId('status_id')->constrained('statuses');
             $table->integer('rating')->nullable();
+            $table->float('totalPrice')->nullable();
+            $table->text('description')->nullable();
             $table->date('forDate');
             $table->timestamps();
         });

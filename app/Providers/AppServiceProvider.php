@@ -138,6 +138,24 @@ class AppServiceProvider extends ServiceProvider
 
             $event->menu->add(
                 [
+                    'icon' => 'fas fa-truck',
+                    'url' => '#',
+                    'text' => 'Orders',
+                    'id' => 'orders',
+                    'key' => 'orders',
+                    'active' => ['orders*']
+                ],
+            );
+            $event->menu->addIn('orders',
+                [
+                    'icon' => 'fas fa-table',
+                    'text' => 'View All',
+                    'url' => '/orders'
+                ]
+            );
+
+            $event->menu->add(
+                [
                     'icon' => 'fas fa-signal',
                     'url' => '#',
                     'text' => 'Statuses',

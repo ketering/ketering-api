@@ -1,4 +1,5 @@
 @extends('adminlte::page')
+@section('plugins.Select2', true)
 
 @section('content_header')
     <h3 class="m-0 text-dark">Pregled korisnika</h3>

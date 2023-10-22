@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminPanel\CategoryController;
 use App\Http\Controllers\AdminPanel\MealController;
+use App\Http\Controllers\AdminPanel\OrderController;
 use App\Http\Controllers\AdminPanel\StatusController;
 use App\Http\Controllers\AdminPanel\TypeController;
 use App\Http\Controllers\AdminPanel\UserController;
@@ -35,4 +36,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('/types', TypeController::class);
     Route::resource('/meals', MealController::class);
     Route::resource('/statuses', StatusController::class);
+    Route::resource('/orders', OrderController::class);
+    Route::post('/change-order-status/{order}', [OrderController::class, 'changeStatus'])->name('order.change-status');
 });
