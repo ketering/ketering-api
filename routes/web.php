@@ -22,15 +22,11 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/home', function () {
-    return view('home');
-})->name('home')->middleware('auth');
-
 Route::group(['middleware' => ['auth', 'admin']], function () {
+
+    Route::get('/', function () {
+        return view('home');
+    });
     Route::resource('/users', UserController::class);
 
     Route::resource('/categories', CategoryController::class);
