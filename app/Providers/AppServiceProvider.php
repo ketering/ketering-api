@@ -28,7 +28,7 @@ class AppServiceProvider extends ServiceProvider
                 [
                     'icon' => 'fas fa-chart-area',
                     'text' => 'Dashboard',
-                    'url' => '/home'
+                    'url' => '/'
                 ]
             );
             $event->menu->add(['header' => 'USER MANAGEMENT', 'classes' => 'font-weight-bold']);
