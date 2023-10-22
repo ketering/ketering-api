@@ -31,6 +31,12 @@
                                 @endforeach
                             </p>
                         </li>
+                        <li class="list-group-item">
+                            <b>Ocjena</b>
+                            <p class="float-right m-0">
+                                <b>{{ $meal->avg_rating }}</b>
+                            </p>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -60,24 +66,20 @@
                                    style="width:100%">
                                 <thead>
                                 <tr>
-                                    <th>Options</th>
+                                    <th>Ime</th>
+                                    <th>Kompanija</th>
+                                    <th>Ocjena</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach([] as $meal)
-                                    <td>
-                                        <div class="d-flex justify-content-center">
-                                            <a href="#"
-                                               class="btn btn-outline-primary ml-2 mr-2"><i class="fas fa-eye"></i></a>
-                                        </div>
-                                    </td>
+                                @foreach($orders as $order)
+                                    <tr>
+                                        <td>{{ $order->user->name }} {{ $order->user->surname }}</td>
+                                        <td>{{ $order->user->company->name }}</td>
+                                        <td>{{ $order->meals()->where('meal_id', $meal->id)->withPivot('rating')->get()->first()->pivot->rating ?? 'Nema ocjene' }}</td>
+                                    </tr>
                                 @endforeach
                                 </tbody>
-                                <tfoot>
-                                <tr>
-                                    <th>Options</th>
-                                </tr>
-                                </tfoot>
                             </table>
                         </div>
 

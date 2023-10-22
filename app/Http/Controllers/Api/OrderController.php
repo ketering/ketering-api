@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Resources\Order\OrderResource;
 use App\Models\Meal;
 use App\Models\Order;
 use App\Models\Status;
@@ -50,7 +51,7 @@ class OrderController extends BaseController
         if ($inAdvance = $input['inAdvance']) {
             for ($i = 0; $i < $inAdvance; $i++) {
                 $new = $order->replicate();
-                $new->forDate = Carbon::parse($order->forDate)->addDays($i+1);
+                $new->forDate = Carbon::parse($order->forDate)->addDays($i + 1);
                 $new->save();
                 $order->meals()->withPivot('amount')->get()->map(function ($meal) use ($new) {
                     $new->meals()->attach($meal, [
@@ -61,5 +62,40 @@ class OrderController extends BaseController
         }
 
         return $this->sendResponse('', 'Order created successfully');
+    }
+
+    public function show(Order $order)
+    {
+        # code
+        $response = new OrderResource($order);
+
+        return $this->sendResponse($response, 'Order fetched successfully');
+    }
+
+    public function rate(Request $request, Order $order)
+    {
+        # code
+        $validator = \Validator::make($request->all(), [
+            'order_rating' => ['nullable', 'integer'],
+            'meals_rating' => ['nullable', 'array'],
+            'meals_rating.*' => ['nullable', 'array'],
+            'meals_rating.*.*' => ['nullable', 'integer']
+        ]);
+
+        if ($validator->fails()) {
+            return $this->sendError('Validation Error.', $validator->errors(), Response::HTTP_UNPROCESSABLE_ENTITY);
+        }
+
+        $input = $validator->validated();
+        $order->update(['rating' => $input['order_rating']]);
+
+        if ($ratings = $input['meals_rating']) {
+            foreach ($ratings as $r) {
+                $order->meals()->withPivot('rating')->where('meal_id', $r[0])->update(['rating' => $r[1]]);
+                $meal = Meal::find($r[0]);
+                $meal->avg_rating = is_null($meal->avg_rating) ? $r[1] : ($meal->avg_rating + $r[1]) / 2;
+                $meal->save();
+            }
+        }
     }
 }

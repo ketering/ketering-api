@@ -60,10 +60,14 @@ class MealController extends Controller
         //
         $categories = Category::all();
         $types = Type::all();
+
+        $orders = $meal->orders()->withPivot('rating')->wherePivotNotNull('rating')->get();
+
         return view('meals.show', [
             'meal' => $meal,
             'categories' => $categories,
-            'types' => $types
+            'types' => $types,
+            'orders' => $orders
         ]);
     }
 

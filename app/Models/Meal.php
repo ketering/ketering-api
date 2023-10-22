@@ -40,4 +40,10 @@ class Meal extends Model
         # code
         return $this->belongsToMany(Type::class);
     }
+
+    public function orders(): BelongsToMany
+    {
+        # code
+        return $this->belongsToMany(Order::class);
+    }
 }
