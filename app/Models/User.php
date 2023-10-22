@@ -67,7 +67,7 @@ class User extends Authenticatable
     public static function adminlte_profile_url(): string
     {
         # code
-        return '#';
+        return route('users.show', auth()->user());
     }
 
     public function adminlte_image(): string

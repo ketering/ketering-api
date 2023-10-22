@@ -12,6 +12,11 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('admin')->except('show', 'update');
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -60,12 +65,16 @@ class UserController extends Controller
     public function show(User $user)
     {
         //
-        $roles = Role::where('id', '>', \Auth::user()->role_id)->get();
-        return view('users.show', [
-            'user' => $user,
-            'roles' => $roles,
-            'companies' => Company::all()
-        ]);
+        $response = \Gate::inspect('update', $user);
+        if ($response->allowed()) {
+            $roles = Role::where('id', '>', \Auth::user()->role_id)->get();
+            return view('users.show', [
+                'user' => $user,
+                'roles' => $roles,
+                'companies' => Company::all()
+            ]);
+        }
+        return redirect()->back()->with('fail', $response->message());
     }
 
     /**
@@ -83,16 +92,21 @@ class UserController extends Controller
     public function update(UpdateUserRequest $request, User $user)
     {
         //
-        $input = $request->validated();
-        $user->update(\Arr::only($input, ['name', 'surname', 'email']));
+        $response = \Gate::inspect('update', $user);
 
-        $role = Role::findOrFail($input['role_id']);
-        $role->users()->save($user);
+        if ($response->allowed()) {
+            $input = $request->validated();
+            $user->update(\Arr::only($input, ['name', 'surname', 'email']));
 
-        $company = Company::findOrFail($input['company_id']);
-        $company->users()->save($user);
+            $role = Role::findOrFail($input['role_id']);
+            $role->users()->save($user);
 
-        return redirect()->route('users.show', $user->id)->with('success', "{$user->role->name} uspješno ažuriran");
+            $company = Company::findOrFail($input['company_id']);
+            $company->users()->save($user);
+
+            return redirect()->route('users.show', $user->id)->with('success', "{$user->role->name} uspješno ažuriran");
+        }
+        return redirect()->back()->with('fail', $response->message());
     }
 
     /**

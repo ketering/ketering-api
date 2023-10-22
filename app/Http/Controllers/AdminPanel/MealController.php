@@ -11,6 +11,12 @@ use Illuminate\Http\Request;
 
 class MealController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('superadmin')->except('index', 'show');
+    }
+
     /**
      * Display a listing of the resource.
      */

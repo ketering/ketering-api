@@ -30,12 +30,14 @@ Route::get('/home', function () {
     return view('home');
 })->name('home')->middleware('auth');
 
-Route::group(['middleware' => ['auth']], function () {
+Route::group(['middleware' => ['auth', 'admin']], function () {
     Route::resource('/users', UserController::class);
+
     Route::resource('/categories', CategoryController::class);
     Route::resource('/types', TypeController::class);
     Route::resource('/meals', MealController::class);
     Route::resource('/statuses', StatusController::class);
+
     Route::resource('/orders', OrderController::class);
     Route::post('/change-order-status/{order}', [OrderController::class, 'changeStatus'])->name('order.change-status');
 });
