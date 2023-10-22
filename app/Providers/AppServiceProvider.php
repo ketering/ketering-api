@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Role;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\ServiceProvider;
 use JeroenNoten\LaravelAdminLte\Events\BuildingMenu;
@@ -49,13 +50,15 @@ class AppServiceProvider extends ServiceProvider
                     'url' => '/users'
                 ]
             );
-            $event->menu->addIn('users',
-                [
-                    'icon' => 'fas fa-plus',
-                    'text' => 'New User',
-                    'url' => '/users/create'
-                ]
-            );
+            if (auth()->user()->role == Role::superadmin()) {
+                $event->menu->addIn('users',
+                    [
+                        'icon' => 'fas fa-plus',
+                        'text' => 'New User',
+                        'url' => '/users/create'
+                    ]
+                );
+            }
 
             $event->menu->add(['header' => 'MEAL MANAGEMENT', 'classes' => 'font-weight-bold']);
 
@@ -76,13 +79,15 @@ class AppServiceProvider extends ServiceProvider
                     'url' => '/meals'
                 ]
             );
-            $event->menu->addIn('meals',
-                [
-                    'icon' => 'fas fa-plus',
-                    'text' => 'New Meal',
-                    'url' => '/meals/create'
-                ]
-            );
+            if (auth()->user()->role == Role::superadmin()) {
+                $event->menu->addIn('meals',
+                    [
+                        'icon' => 'fas fa-plus',
+                        'text' => 'New Meal',
+                        'url' => '/meals/create'
+                    ]
+                );
+            }
 
             $event->menu->add(
                 [
@@ -101,13 +106,15 @@ class AppServiceProvider extends ServiceProvider
                     'url' => '/categories'
                 ]
             );
-            $event->menu->addIn('categories',
-                [
-                    'icon' => 'fas fa-plus',
-                    'text' => 'New Category',
-                    'url' => '/categories/create'
-                ]
-            );
+            if (auth()->user()->role == Role::superadmin()) {
+                $event->menu->addIn('categories',
+                    [
+                        'icon' => 'fas fa-plus',
+                        'text' => 'New Category',
+                        'url' => '/categories/create'
+                    ]
+                );
+            }
 
             $event->menu->add(
                 [
@@ -126,13 +133,15 @@ class AppServiceProvider extends ServiceProvider
                     'url' => '/types'
                 ]
             );
-            $event->menu->addIn('types',
-                [
-                    'icon' => 'fas fa-plus',
-                    'text' => 'New Type',
-                    'url' => '/types/create'
-                ]
-            );
+            if (auth()->user()->role == Role::superadmin()) {
+                $event->menu->addIn('types',
+                    [
+                        'icon' => 'fas fa-plus',
+                        'text' => 'New Type',
+                        'url' => '/types/create'
+                    ]
+                );
+            }
 
             $event->menu->add(['header' => 'ORDER MANAGEMENT', 'classes' => 'font-weight-bold']);
 
@@ -171,13 +180,15 @@ class AppServiceProvider extends ServiceProvider
                     'url' => '/statuses'
                 ]
             );
-            $event->menu->addIn('statuses',
-                [
-                    'icon' => 'fas fa-plus',
-                    'text' => 'New Status',
-                    'url' => '/statuses/create'
-                ]
-            );
+            if (auth()->user()->role == Role::superadmin()) {
+                $event->menu->addIn('statuses',
+                    [
+                        'icon' => 'fas fa-plus',
+                        'text' => 'New Status',
+                        'url' => '/statuses/create'
+                    ]
+                );
+            }
 
         });
     }
