@@ -3,7 +3,7 @@
 @section('plugins.DatatablesResponsive', true)
 
 @section('content_header')
-    <h3 class="m-0 text-dark">View Single Meal Type</h3>
+    <h3 class="m-0 text-dark">Tip obroka</h3>
 @stop
 
 @section('content')
@@ -15,7 +15,7 @@
                     <p class="text-muted text-center"></p>
                     <ul class="list-group list-group-unbordered mb-3">
                         <li class="list-group-item">
-                            <b>Meals</b> <a class="float-right">
+                            <b>Obroci</b> <a class="float-right">
                                 {{ $type->meals->count() }}
                             </a>
                         </li>
@@ -30,11 +30,11 @@
                     <ul class="nav nav-pills" id="myTab" role="tablist">
                         <li class="nav-item">
                             <a class="nav-link active" id="meal-tab" data-toggle="tab" href="#meal" role="tab"
-                               aria-controls="meal" aria-selected="true">Meals</a>
+                               aria-controls="meal" aria-selected="true">Obroci</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" id="settings-tab" data-toggle="tab" href="#settings" role="tab"
-                               aria-controls="settings" aria-selected="false">Settings</a>
+                               aria-controls="settings" aria-selected="false">Podešavanja/a>
                         </li>
                     </ul>
 
@@ -88,7 +88,7 @@
                                 <x-adminlte-input enable-old-support value="{{ $type->name }}" name="name"
                                                   label="Name"
                                                   placeholder="Name"/>
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" class="btn btn-primary">Sačuvaj</button>
                             </form>
                         </div>
                     </div>

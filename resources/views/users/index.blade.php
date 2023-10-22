@@ -3,7 +3,7 @@
 @section('plugins.DatatablesResponsive', true)
 
 @section('content_header')
-    <h3 class="m-0 text-dark">View All Users</h3>
+    <h3 class="m-0 text-dark">Pregled svih korisnika</h3>
 @stop
 
 @section('content')
@@ -29,11 +29,11 @@
                                style="width:100%">
                             <thead>
                             <tr>
-                                <th>Name</th>
-                                <th>Surname</th>
-                                <th>Company</th>
-                                <th>Email</th>
-                                <th>Options</th>
+                                <th>Ime</th>
+                                <th>Korisničko ime</th>
+                                <th>Kompanija</th>
+                                <th>E-mail</th>
+                                <th>Opcije</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -57,11 +57,11 @@
                             </tbody>
                             <tfoot>
                             <tr>
-                                <th>Name</th>
-                                <th>Surname</th>
-                                <th>Company</th>
-                                <th>Email</th>
-                                <th>Options</th>
+                                <th>Ime</th>
+                                <th>Korisničko ime</th>
+                                <th>Kompanija</th>
+                                <th>E-mail</th>
+                                <th>Opcije</th>
                             </tr>
                             </tfoot>
                         </table>

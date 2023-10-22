@@ -3,7 +3,7 @@
 @section('plugins.DatatablesResponsive', true)
 
 @section('content_header')
-    <h3 class="m-0 text-dark">View All Meal Categories</h3>
+    <h3 class="m-0 text-dark">Sve kategorije obroka</h3>
 @stop
 
 @section('content')
@@ -17,9 +17,9 @@
                    style="width:100%">
                 <thead>
                 <tr>
-                    <th>Icon</th>
-                    <th>Name</th>
-                    <th>Options</th>
+                    <th>Ikonica</th>
+                    <th>Naziv</th>
+                    <th>Opcije</th>
                 </tr>
                 </thead>
                 <tbody>

@@ -13,7 +13,7 @@
         <div class="col-12">
             <div class="card card-primary card-outline">
                 <div class="card-body box-meals">
-                    <h3 class="meals-username text-center">Order <b>{{ $order->id }}</b></h3>
+                    <h3 class="meals-username text-center">Narudžbina <b>{{ $order->id }}</b></h3>
                     <p class="text-muted text-center"></p>
                     <ul class="list-group list-group-unbordered mb-3">
                         <li class="list-group-item d-flex justify-content-between align-items-center">
