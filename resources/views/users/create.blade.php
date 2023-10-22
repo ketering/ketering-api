@@ -1,4 +1,5 @@
 @extends('adminlte::page')
+@section('plugins.Select2', true)
 
 @section('content_header')
     <h3 class="m-0 text-dark">Create new User</h3>
@@ -15,9 +16,19 @@
         <x-adminlte-input enable-old-support name="password_confirmation" type="password" label="Password Confirmation"
                           placeholder="Password Confirmation"/>
 
+        <x-adminlte-select2 name="company_id" label="Kompanija" label-class=""
+                            class="needsDisable">
+            <x-slot name="prependSlot">
+                <div class="input-group-text">
+                    <i class="fas fa-building"></i>
+                </div>
+            </x-slot>
+            @foreach($companies as $company)
+                <option value="{{ $company->id }}">{{ $company->name }}</option>
+            @endforeach
+        </x-adminlte-select2>
 
-        <x-adminlte-select name="role_id" label="User Role" label-class=""
-                           igroup-size="lg">
+        <x-adminlte-select name="role_id" label="User Role" label-class="">
             <x-slot name="prependSlot">
                 <div class="input-group-text">
                     <i class="fas fa-id-badge"></i>

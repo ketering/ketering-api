@@ -31,8 +31,10 @@ class UserController extends Controller
     {
         //
         $roles = Role::where('id', '>', \Auth::user()->role_id)->get();
+        $companies = Company::all();
         return view('users.create', [
-            'roles' => $roles
+            'roles' => $roles,
+            'companies' => $companies
         ]);
     }
 
@@ -43,10 +45,12 @@ class UserController extends Controller
     {
         //
         $input = $request->validated();
-        $user = new User(\Arr::except($input, ['role_id']));
+        $user = new User(\Arr::except($input, ['role_id', 'company_id']));
         $role = Role::findOrFail($input['role_id']);
+        $company = Company::findOrFail($input['company_id']);
 
         $role->users()->save($user);
+        $company->users()->save($user);
         return redirect()->route('users.index')->with('success', 'User successfully created');
     }
 

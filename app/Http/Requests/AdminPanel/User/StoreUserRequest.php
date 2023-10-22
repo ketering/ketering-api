@@ -28,6 +28,7 @@ class StoreUserRequest extends FormRequest
             "password" => ['confirmed', 'min:8', 'max:255'],
             "role_id" => ['required'],
             "photoPath" => [''],
+            "company_id" => ['required']
         ];
     }
 }
