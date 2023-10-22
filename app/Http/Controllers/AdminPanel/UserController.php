@@ -56,7 +56,7 @@ class UserController extends Controller
 
         $role->users()->save($user);
         $company->users()->save($user);
-        return redirect()->route('users.index')->with('success', 'User successfully created');
+        return redirect()->route('users.index')->with('success', 'Korisnik uspješno kreiran');
     }
 
     /**
@@ -104,7 +104,7 @@ class UserController extends Controller
             $company = Company::findOrFail($input['company_id']);
             $company->users()->save($user);
 
-            return redirect()->route('users.show', $user->id)->with('success', "{$user->role->name} uspješno ažuriran");
+            return redirect()->route('users.show', $user->id)->with('success', "{$user->role->name} Korisnik uspješno ažuriran");
         }
         return redirect()->back()->with('fail', $response->message());
     }
@@ -117,6 +117,6 @@ class UserController extends Controller
         //
         $user = User::findOrFail($id);
         $user->delete();
-        return redirect()->route('users.index')->with('success', 'User successfully deleted');
+        return redirect()->route('users.index')->with('success', 'Korisnik uspješno obrisan');
     }
 }

@@ -48,7 +48,7 @@ class CategoryController extends Controller
             'icon' => 'fas fa-bread-slice',
             ...$validator
         ]);
-        return redirect()->route('categories.index')->with('success', 'Category successfully created');
+        return redirect()->route('categories.index')->with('success', 'Kategorija uspješno kreirana');
     }
 
     /**
@@ -86,7 +86,7 @@ class CategoryController extends Controller
         }
 
         $category->update($validator->validated());
-        return redirect()->route('categories.index')->with('success', 'Category successfully updated');
+        return redirect()->route('categories.index')->with('success', 'Kategorija uspješno ažurirana');
     }
 
     /**

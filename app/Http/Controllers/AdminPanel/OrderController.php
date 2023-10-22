@@ -49,7 +49,7 @@ class OrderController extends Controller
         $status = Status::findOrFail($request->status);
         $status->orders()->save($order);
 
-        return back()->with('success', 'Status changed successfully');
+        return back()->with('success', 'Status uspješno izmijenjen');
     }
 
     /**
