@@ -10,7 +10,7 @@
         @csrf
 
         <x-adminlte-input enable-old-support name="name" label="Ime" placeholder="Ime"/>
-        <x-adminlte-input enable-old-support name="surname" label="Korisnicko ime" placeholder="Korisnicko ime"/>
+        <x-adminlte-input enable-old-support name="surname" label="Prezime" placeholder="Prezime"/>
         <x-adminlte-input enable-old-support name="email" type="email" label="E-mail" placeholder="E-mail"/>
         <x-adminlte-input enable-old-support name="password" type="password" label="Lozinka" placeholder="Lozinka"/>
         <x-adminlte-input enable-old-support name="password_confirmation" type="password" label="Potvrda lozinke"
