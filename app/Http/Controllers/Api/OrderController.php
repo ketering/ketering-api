@@ -107,5 +107,7 @@ class OrderController extends BaseController
                 $meal->save();
             }
         }
+
+        return $this->sendResponse('', 'Order successfully rated');
     }
 }
