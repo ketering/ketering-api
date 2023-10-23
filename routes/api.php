@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\MealController;
 use App\Http\Controllers\Api\OrderController;
 use App\Http\Controllers\Api\TypeController;
+use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -54,5 +55,10 @@ Route::group(["middleware" => 'auth:sanctum'], function () {
         Route::post('/orders/store', 'store');
         Route::get('/orders/{order}', 'show');
         Route::post('/orders/{order}/rate', 'rate');
+    });
+
+    Route::controller(UserController::class)->group(function () {
+        Route::get('/me', 'me');
+        Route::post('/me/update', 'update');
     });
 });

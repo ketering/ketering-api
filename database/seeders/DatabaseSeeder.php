@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Company;
 use App\Models\Status;
 use App\Models\Type;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -60,6 +61,10 @@ class DatabaseSeeder extends Seeder
                 'name' => $company,
             ])->create();
         }
+
+        $user = User::find(1);
+        $company = Company::find(6);
+        $company->users()->save($user);
 
         $categories = [
             ['Hrana', 'fas fa-pizza-slice'],
