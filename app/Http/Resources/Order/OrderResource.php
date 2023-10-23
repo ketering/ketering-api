@@ -3,6 +3,7 @@
 namespace App\Http\Resources\Order;
 
 use App\Http\Resources\Meal\MealCollection;
+use App\Http\Resources\Meal\MealInOrderCollection;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -22,7 +23,7 @@ class OrderResource extends JsonResource
             'totalPrice' => $this->totalPrice,
             'forDate' => $this->forDate,
             'description' => $this->description,
-            'meals' => MealCollection::collection($this->meals)
+            'meals' => MealInOrderCollection::collection($this->meals()->withPivot('amount')->get())
         ];
     }
 }

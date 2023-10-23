@@ -17,7 +17,7 @@ class OrderController extends BaseController
     public function index()
     {
         # code
-        $orders = auth()->user()->orders;
+        $orders = auth()->user()->orders()->orderBy('forDate', 'desc')->get();
         $response = OrderCollection::collection($orders);
 
         return $this->sendResponse($response, 'Orders fetched successfully');
