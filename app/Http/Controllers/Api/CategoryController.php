@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Resources\Meal\CategoryCollection;
+use App\Http\Resources\Meal\MealByCatCollection;
 use App\Http\Resources\Meal\MealCollection;
 use App\Models\Category;
 use Illuminate\Http\JsonResponse;
@@ -27,7 +28,7 @@ class CategoryController extends BaseController
     public function show(Category $category)
     {
         # code
-        $response = MealCollection::collection($category->meals);
+        $response = new MealByCatCollection($category);
 
         return $this->sendResponse($response, 'Meals fetched successfully');
     }

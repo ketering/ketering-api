@@ -96,15 +96,17 @@
                                 <thead>
                                 <tr>
                                     <th>Naziv</th>
+                                    <th>Količina</th>
                                     <th>Cijena</th>
                                     <th>Ocjena Korisnika</th>
                                     <th>Opcije</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($order->meals()->withPivot('rating')->get() as $meal)
+                                @foreach($order->meals()->withPivot('rating', 'amount')->get() as $meal)
                                     <tr>
                                         <td>{{ $meal->name }}</td>
+                                        <td>{{ $meal->pivot->amount }}</td>
                                         <td>{{ $meal->price }} <b>&#8364;</b></td>
                                         <td><b>{{ $meal->pivot->rating }}</b></td>
                                         <td>

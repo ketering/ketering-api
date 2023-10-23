@@ -50,6 +50,7 @@ Route::group(["middleware" => 'auth:sanctum'], function () {
     });
 
     Route::controller(OrderController::class)->group(function () {
+        Route::get('/orders', 'index');
         Route::post('/orders/store', 'store');
         Route::get('/orders/{order}', 'show');
         Route::post('/orders/{order}/rate', 'rate');

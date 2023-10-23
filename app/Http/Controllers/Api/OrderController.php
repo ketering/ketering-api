@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Resources\Order\OrderCollection;
 use App\Http\Resources\Order\OrderResource;
 use App\Models\Meal;
 use App\Models\Order;
@@ -13,6 +14,15 @@ use Symfony\Component\HttpFoundation\Response;
 class OrderController extends BaseController
 {
     //
+    public function index()
+    {
+        # code
+        $orders = auth()->user()->orders;
+        $response = OrderCollection::collection($orders);
+
+        return $this->sendResponse($response, 'Orders fetched successfully');
+    }
+
     public function store(Request $request)
     {
         # code
