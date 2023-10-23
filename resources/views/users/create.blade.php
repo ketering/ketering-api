@@ -28,7 +28,7 @@
             @endforeach
         </x-adminlte-select2>
 
-        <x-adminlte-select name="role_id" label="Uloga korisnika" label-class="">
+        <x-adminlte-select name="role_id" label="Tip korisnika" label-class="">
             <x-slot name="prependSlot">
                 <div class="input-group-text">
                     <i class="fas fa-id-badge"></i>
